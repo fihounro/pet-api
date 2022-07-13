@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head th:replace="fragments/header :: header"/>
+<body>
+<div id="container" class="container" th:fragments="${content}">
+
+    <div class="row">
+
+        <div class="col-md-6 col-md-offset-3">
+
+            <!-- Success Message-->
+            <div th:if="${param.success}">
+                <div class="alert alert-info">You've successfully registered to Rony Pet Clinic App</div>
+            </div>
+            <h1>Registration</h1>
+            <form class="row g-4" th:action="@{/registration}" method="POST" th:object="${user}">
+
+                <div class="col-md-4">
+                    <div class="form-outline">
+                        <label for="firstname" class="control-label">First Name</label>
+                        <input type="text" class="form-control is-valid" id="firstname" th:field="*{firstName}" required />
+                        <div class="valid-feedback">Looks good!</div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-outline">
+                        <label for="lastname" class="form-label">Last Name</label>
+                        <input type="text" class="form-control is-valid" id="lastname" th:field="*{lastName}" required />
+                        <div class="valid-feedback">Looks good!</div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-outline">
+                        <label for="birthDate" class="form-label">BirthDate</label>
+                        <input type="text" class="form-control is-valid" id="birthDate" th:field="*{birthDate}" required />
+                        <div class="valid-feedback">Looks good!</div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-outline">
+                        <label for="gender" class="form-label">Gender</label>
+                        <select id="gender" name="gender" th:field="*{gender}">
+                            <option th:each="genderOpt : ${T(bj.finance.petapi.model.Gender).values()}"
+                                    th:value="${genderOpt}" th:text="${genderOpt}"></option>
+                        </select>
+                        <div class="valid-feedback">Looks good!</div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="input-group form-outline">
+                        <label for="username" class="form-label">Username</label>
+                        <span class="input-group-text" id="inputGroupPrepend3">@</span>
+                        <input
+                                type="text"
+                                class="form-control is-invalid"
+                                id="username"
+                                th:field="*{username}"
+                                aria-describedby="inputGroupPrepend3"
+                                required
+                        />
+                        <div class="invalid-feedback">Please choose a username.</div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-outline">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control is-invalid" id="password" th:field="*{password}" required />
+                        <div class="invalid-feedback">Please provide a valid password.</div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-outline">
+                        <label for="email" class="form-label">City</label>
+                        <input type="email" class="form-control is-invalid" id="email" th:field="*{email}" required />
+                        <div class="invalid-feedback">Please provide a valid Email.</div>
+                    </div>
+                </div>
+
+
+                <div class="col-12">
+                    <button class="btn btn-primary" type="submit">Submit form</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+</div>
+
+<div th:replace="fragments/footer :: footer"/>
+
+
+</body>
+</html>
