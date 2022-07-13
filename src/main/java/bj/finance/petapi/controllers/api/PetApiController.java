@@ -15,7 +15,6 @@ import java.util.Set;
 @RestController
 @RequestMapping("api/pets")
 public class PetApiController {
-
     private final PetServiceJpa petService;
     private final MapValidationErrorService mapValidationErrorService;
 
