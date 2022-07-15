@@ -14,7 +14,7 @@ public abstract class AbstractMapService<T extends BaseEntity, ID extends Long> 
 
         return map.values().stream()
                 .filter(Objects::nonNull)
-                .collect(Collectors.toUnmodifiableSet());
+                .collect(Collectors.toSet());
     }
 
     T findById(ID id){

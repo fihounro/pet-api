@@ -4,6 +4,8 @@ import bj.finance.petapi.dto.PetDto;
 import bj.finance.petapi.jpa.PetServiceJpa;
 import bj.finance.petapi.model.Pet;
 import bj.finance.petapi.services.MapValidationErrorService;
+import io.swagger.v3.oas.annotations.Hidden;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -25,6 +27,7 @@ public class PetApiController {
     }
 
     @GetMapping("/{id}")
+    @Hidden
     public ResponseEntity<Pet> getOnePet(@PathVariable("id") Long id){
 
         Pet pet = petService.getOnePet(id);

@@ -10,11 +10,14 @@ import org.springframework.context.annotation.Configuration;
 public class SwaggerConfig {
 
     @Bean
-    public OpenAPI documentationOpenAPI() {
-        return new OpenAPI()
-                .info(new Info().title("Pet Clinic Management API")
-                        .description("Spring Pet Clinic app")
-                        .version("v0.0.1")
-                        .license(new License().name("Apache 2.0").url("http://springdoc.org")));
+    public OpenAPI documentation(){
+        OpenAPI api = new OpenAPI();
+        Info info = new Info();
+        info.title("Pet Clinic API")
+                .description("API de gestion d'une clinique vétérinaire")
+                .version("1.2")
+                .license(new License().name("Apache 2.0").url("http://springdoc.org"));
+        api.info(info);
+        return api;
     }
 }
